@@ -19,7 +19,7 @@ void	sleeping(long time)
 	time_begin = current_time();
 	while (time + time_begin > current_time())
 		usleep(100);
-
+	return ;
 
 }
 
@@ -62,7 +62,7 @@ void    eat(t_thread *thread)
 		printer(thread,'e');
 		sleeping(thread->args_obj->eat);
 		thread->death = current_time() + thread->args_obj->die;
-		thread->philo_eat_counter --;
+		thread->philo_eat_counter -= 1;
 		pthread_mutex_unlock(thread->fork1);
 		pthread_mutex_unlock(thread->fork2);
 		if (thread->philo_eat_counter == 0)

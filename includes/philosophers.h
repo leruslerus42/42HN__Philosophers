@@ -20,6 +20,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <string.h> 
+# include <limits.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -37,8 +38,7 @@ typedef struct s_args
 	int             sleep;
 	int             full_belly;
 	pthread_mutex_t *forks;
-	long            time_start;
-	long            time_end;
+long            time_start;
 	int				end;
 	int				temp;
 }   t_args;

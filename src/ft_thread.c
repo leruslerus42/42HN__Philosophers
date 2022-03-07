@@ -21,7 +21,7 @@ void *guardian_thread(void *param)
 	guardian_thread = (t_thread *)param;
 	while (TRUE)
 	{
-		if (guardian_thread[i].death < current_time())
+		if (current_time() >= guardian_thread[i].death)
 		{
 			printer(&guardian_thread[i], 'd');
 			end_of_program(guardian_thread);
@@ -132,10 +132,9 @@ void	philo(t_thread *thread,t_args *args)
 		/*thread[i].args = args;
 		thread[i].philo_eat_counter = args->full_belly;
 		thread[i].id = ++i;*/
-
+	}
 
 		ft_create_thread(args, thread);
-	}
 }
 	
 /*

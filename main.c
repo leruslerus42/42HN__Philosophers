@@ -39,7 +39,7 @@ int main (int argc, char **argv)
 	args = parsing(argc, argv);
 	if (!args)
 		return (-1);
-	thread = malloc(sizeof(thread) * (args->philosophers + 1));
+	thread = malloc(sizeof(t_thread) * (args->philosophers + 1));
 	if (!thread)
 		return (-1);
 	ft_mutex_init(args, thread);
