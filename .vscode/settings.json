@@ -1,0 +1,8 @@
+{
+    "42header.username": "rrajaobe",
+    "42header.email": " rrajaobe@student.42heilbronn.de",
+    "files.associations": {
+        "stdio.h": "c",
+        "philosophers.h": "c"
+    }
+}
