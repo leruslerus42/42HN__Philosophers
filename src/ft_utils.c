@@ -6,7 +6,7 @@
 /*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 08:56:12 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/03/07 09:03:49 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/18 06:05:18 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void    end_of_program(t_thread *thread)
 	int i;
 
 	i = 0;
-	while (thread->args_obj->philosophers > i)
+	while (i < thread->args_obj->philosophers)
 	{
 		thread[i].args_obj->end = TRUE;
-		thread[i].exit = TRUE;
+		thread[i].exit = 0;
 		ft_mutex_unlock(&thread[i]);
 		i++;
 	}

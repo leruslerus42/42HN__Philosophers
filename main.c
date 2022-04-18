@@ -6,7 +6,7 @@
 /*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 21:42:16 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/03/07 09:03:55 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/18 05:52:25 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ int main (int argc, char **argv)
 	ft_mutex_init(args, thread);
 	philo(thread, args);
 	ft_mutex_destroy(args, thread);//mutex should be unlocked, otherwise undefined behaviour
-	//printf("PHILOS: %i\n, die: %i\n, eat: %i\n, sleep: %i\n, fully_bell: %i\n", args->philosophers, args->die, args->eat, args->sleep, args->full_belly);
 	return (0);
 }

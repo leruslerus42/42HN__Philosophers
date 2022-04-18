@@ -6,13 +6,13 @@
 #    By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 05:39:02 by rrajaobe          #+#    #+#              #
-#    Updated: 2022/03/07 10:02:07 by rrajaobe         ###   ########.fr        #
+#    Updated: 2022/04/18 05:25:00 by rrajaobe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = philosophers
 
@@ -28,7 +28,7 @@ OBJ = $(SRC: .c=.o)
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-		$(CC)  $(OBJ) -lpthread -g -o $(NAME)
+		$(CC) $(FLAGS) $(OBJ) -lpthread -o $(NAME)
 #$(CFLAGS)
 #$(NAME): *.c
 #		$(CC) $(FLAGS) -c $(SRC)

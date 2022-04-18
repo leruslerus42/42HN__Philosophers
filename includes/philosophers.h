@@ -6,7 +6,7 @@
 /*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 05:38:57 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/03/07 09:42:08 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/18 05:49:27 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_args
 	int             sleep;
 	int             full_belly;
 	pthread_mutex_t *forks;
-long            time_start;
+	long            time_start;
 	int				end;
 	int				temp;
 }   t_args;

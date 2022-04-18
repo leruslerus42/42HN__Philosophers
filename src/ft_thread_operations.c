@@ -6,7 +6,7 @@
 /*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:09:22 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/03/07 10:30:17 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/11 12:38:43 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void printer(t_thread *thread, char op)
 		else if (op == 's')
 			printf("%ld	%d	is sleeping\n", time, thread->id);
 		else if (op == 't')
-			printf("%ld %d	is thinking\n", time, thread->id);
+			printf("%ld	%d	is thinking\n", time, thread->id);
 		else if (op == 'f')
 			printf("%ld	%d	has taken a fork\n", time, thread->id);
 		else if (op == 'd')

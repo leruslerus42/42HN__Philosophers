@@ -6,7 +6,7 @@
 /*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:37:39 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/03/07 10:30:25 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/11 12:45:38 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,32 +63,6 @@ void *ft_philosophers(void *param)
 void    ft_create_thread(t_args *args, t_thread *thread)
 {
 	pthread_t	_guardian_thread;
-	/*static	int	i = 1;
-	static	int	button = 0;
-	int 	phil_numb[args->philosophers];
-
-	args->time_start = current_time();
-	if (button == 0)
-	{
-		philo(thread, args);
-		pthread_create(&_guardian_thread, NULL, &guardian_thread,thread);
-	}
-	else
-		button = 0;
-	while (i <= args->philosophers)
-	{
-		//thread->id = i;
-		pthread_mutex_lock(&thread->threads);
-		phil_numb[i] = i;
-		pthread_create(&(thread[phil_numb[i]].id), NULL, &ft_philosophers, &thread[i]);
-		usleep(100);
-		pthread_mutex_unlock(&thread->threads);
-		i += 2;
-	}
-	button = 1;
-	i = 2;
-	if (button == 1)
-		ft_create_thread(args, thread);*/
 
 	args->temp = 0;
 	args->time_start = current_time();
