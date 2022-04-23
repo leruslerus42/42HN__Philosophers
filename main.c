@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
+/*   By: rrajaobe <rrajaobe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 21:42:16 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/04/18 05:52:25 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/23 09:22:59 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philosophers.h"
-
 
 /*
 ARGS
@@ -22,16 +21,15 @@ ARGS
 [5] number of tries each PHILO must eat, fakultativ: if specifeid, when all PHILOS eat at least this number, the simulation stops.
 
 RULES
-- Each Philo has a number between 1 and [1]
+- Each Philo has a number between 1 and [n]
 - Maximal time between a PHILO's death and the printing message: 10 ms
 PRINTING
 - [] X has taken a fork
 - [] X is eating / sleeping / thinking / died
 [] replaced by the timestamp in ms, X by th PHILO's number
-
 */
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_args		*args;
 	t_thread	*thread;
@@ -44,6 +42,6 @@ int main (int argc, char **argv)
 		return (-1);
 	ft_mutex_init(args, thread);
 	philo(thread, args);
-	ft_mutex_destroy(args, thread);//mutex should be unlocked, otherwise undefined behaviour
+	ft_mutex_destroy(args, thread);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mutex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
+/*   By: rrajaobe <rrajaobe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:00:17 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/04/18 05:45:42 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/23 08:20:37 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_mutex_init(t_args *args, t_thread *thread)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	args->forks = malloc(sizeof(pthread_mutex_t) * args->philosophers);
 	if (args->forks == 0)
-			return ;
+		return ;
 	while (i < args->philosophers)
 	{
 		pthread_mutex_init(&args->forks[i], NULL);
@@ -33,8 +33,8 @@ void	ft_mutex_init(t_args *args, t_thread *thread)
 
 void	ft_mutex_destroy(t_args *args, t_thread *thread)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (i < args->philosophers)
 	{

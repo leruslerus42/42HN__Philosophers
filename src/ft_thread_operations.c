@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_thread_operations.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
+/*   By: rrajaobe <rrajaobe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:09:22 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/04/11 12:38:43 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/23 09:25:23 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void	sleeping(long time)
+void	sleeping(long eat_time)
 {
-	long	time_begin;
+	long	sleep_time_starter;
 
-	time_begin = current_time();
-	while (time + time_begin > current_time())
+	sleep_time_starter = current_time();
+	while (eat_time + sleep_time_starter > current_time())
 		usleep(100);
 	return ;
-
 }
 
-void printer(t_thread *thread, char op)
+void	printer(t_thread *thread, char op)
 {
 	long	time;
-	
+
 	pthread_mutex_lock(&thread->printer);
 	if (thread->args_obj->end == FALSE)
 	{
@@ -37,7 +36,7 @@ void printer(t_thread *thread, char op)
 			printf("%ld	%d	is sleeping\n", time, thread->id);
 		else if (op == 't')
 			printf("%ld	%d	is thinking\n", time, thread->id);
-		else if (op == 'f')
+		else if (op == 'l' || op == 'r')
 			printf("%ld	%d	has taken a fork\n", time, thread->id);
 		else if (op == 'd')
 		{
@@ -51,15 +50,15 @@ void printer(t_thread *thread, char op)
 	pthread_mutex_unlock(&thread->printer);
 }
 
-void    eat(t_thread *thread)
+void	eat(t_thread *thread)
 {
 	if (thread->args_obj->end == FALSE)
 	{
-		pthread_mutex_lock(thread->fork1);//CHANGE: mehrere threads konnten gleich fork nehmen ->DEADLOCK
-		printer(thread, 'f');//
-		pthread_mutex_lock(thread->fork2);//
-		printer(thread, 'f');
-		printer(thread,'e');
+		pthread_mutex_lock(thread->fork1);
+		printer(thread, 'l');
+		pthread_mutex_lock(thread->fork2);
+		printer(thread, 'r');
+		printer(thread, 'e');
 		sleeping(thread->args_obj->eat);
 		thread->death = current_time() + thread->args_obj->die;
 		thread->philo_eat_counter -= 1;
@@ -67,20 +66,17 @@ void    eat(t_thread *thread)
 		pthread_mutex_unlock(thread->fork2);
 		if (thread->philo_eat_counter == 0)
 		{
-			thread->exit = 0;
+			thread->exit = TRUE;
 			ft_mutex_unlock(thread);
 		}
-
 	}
 }
 
-
-
-int current_time (void)
+int	current_time(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 	long			ms;
-	
+
 	gettimeofday(&tv, NULL);
 	ms = (tv.tv_sec * 1000);
 	ms += (tv.tv_usec / 1000);

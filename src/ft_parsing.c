@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
+/*   By: rrajaobe <rrajaobe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 07:09:18 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/03/07 08:46:01 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/23 07:55:17 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
-#include "limits.h"
 
-static int ft_atoi_long(const char *input)
+static int	ft_atoi_long(const char *input)
 {
-	int 			sign;
+	int				sign;
 	long long int	num;
 
 	sign = 1;
@@ -24,20 +23,19 @@ static int ft_atoi_long(const char *input)
 		input++;
 	if (*input == '-' || *input == '+')
 	{	
-		if (*input == '-')	//check if I can go already here out
+		if (*input == '-')
 			sign *= -1;
 		if (*input == '\0')
 			return (FALSE);
 	}
 	while (*input >= '0' && *input <= '9')
-		num = num * 10 + *input++ - '0';	
+		num = num * 10 + *input++ - '0';
 	if (sign * num > INT_MAX || sign * num < 0 || *input != '\0')
 		return (FALSE);
 	return (num);
-
 }
 
-static t_args *ft_initialize_arguments(t_args *args, int argc, char **argv)
+static t_args	*ft_initialize_arguments(t_args *args, int argc, char **argv)
 {
 	memset(args, 0, sizeof(t_args));
 	args->philosophers = ft_atoi_long(argv[1]);
@@ -51,13 +49,12 @@ static t_args *ft_initialize_arguments(t_args *args, int argc, char **argv)
 	return (args);
 }
 
-t_args *parsing(int argc, char **argv)
+t_args	*parsing(int argc, char **argv)
 {
 	t_args	*args;
 	int		i;
 
 	i = 1;
-
 	if (argc < 5 || argc > 6)
 		return (NULL);
 	while (i < argc)

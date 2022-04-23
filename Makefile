@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+         #
+#    By: rrajaobe <rrajaobe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 05:39:02 by rrajaobe          #+#    #+#              #
-#    Updated: 2022/04/18 05:25:00 by rrajaobe         ###   ########.fr        #
+#    Updated: 2022/04/23 06:58:10 by rrajaobe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

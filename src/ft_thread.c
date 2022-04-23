@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_thread.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrajaobe < rrajaobe@student.42heilbronn    +#+  +:+       +#+        */
+/*   By: rrajaobe <rrajaobe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:37:39 by rrajaobe          #+#    #+#             */
-/*   Updated: 2022/04/11 12:45:38 by rrajaobe         ###   ########.fr       */
+/*   Updated: 2022/04/23 09:29:53 by rrajaobe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void *guardian_thread(void *param)
+void	*guardian_thread(void *param)
 {
 	t_thread	*guardian_thread;
 	int			i;
@@ -35,19 +35,19 @@ void *guardian_thread(void *param)
 	return (NULL);
 }
 
-void *ft_philosophers(void *param)
+void	*ft_philosophers(void *param)
 {
 	t_thread	*thread;
 
 	thread = (t_thread *)param;
 	pthread_mutex_lock(&thread->threads);
-	while (thread->exit == TRUE)
+	while (thread->exit != TRUE)
 	{
 		if (thread->args_obj->end == FALSE)
 		{
 			thread->death = current_time() + thread->args_obj->die;
 			eat(thread);
-			if (thread->exit == TRUE)
+			if (thread->exit != TRUE)
 			{
 				printer(thread, 's');
 				sleeping(thread->args_obj->sleep);
@@ -60,7 +60,7 @@ void *ft_philosophers(void *param)
 	return (NULL);
 }
 
-void    ft_create_thread(t_args *args, t_thread *thread)
+void	ft_create_thread(t_args *args, t_thread *thread)
 {
 	pthread_t	_guardian_thread;
 
@@ -69,7 +69,8 @@ void    ft_create_thread(t_args *args, t_thread *thread)
 	while (args->temp < args->philosophers)
 	{
 		if (args->temp % 2 == 0)
-			pthread_create(&thread[args->temp].t, NULL, &ft_philosophers, &thread[args->temp]);
+			pthread_create(&thread[args->temp].t, NULL,
+				&ft_philosophers, &thread[args->temp]);
 		usleep(100);
 		args->temp ++;
 	}
@@ -78,15 +79,15 @@ void    ft_create_thread(t_args *args, t_thread *thread)
 	while (args->temp < args->philosophers)
 	{
 		if (args->temp % 2 != 0)
-			pthread_create(&thread[args->temp].t, NULL, &ft_philosophers, &thread[args->temp]);
+			pthread_create(&thread[args->temp].t, NULL,
+				&ft_philosophers, &thread[args->temp]);
 		usleep(100);
 		args->temp ++;
 	}
 	pthread_create(&_guardian_thread, NULL, &guardian_thread, thread);
-	
 }
 
-void	philo(t_thread *thread,t_args *args)
+void	philo(t_thread *thread, t_args *args)
 {
 	while (args->temp < args->philosophers)
 	{
@@ -96,40 +97,13 @@ void	philo(t_thread *thread,t_args *args)
 		if (args->temp < args->philosophers)
 		{
 			thread[args->temp].fork1 = &args->forks[args->temp];
-			thread[args->temp].exit = TRUE;
+			thread[args->temp].exit = FALSE;
 			if (args->temp == 0)
 				thread[args->temp].fork2 = &args->forks[args->philosophers -1];
 			else
 				thread[args->temp].fork2 = &args->forks[args->temp -1];
 		}
 		args->temp ++;
-		/*thread[i].args = args;
-		thread[i].philo_eat_counter = args->full_belly;
-		thread[i].id = ++i;*/
 	}
-
-		ft_create_thread(args, thread);
+	ft_create_thread(args, thread);
 }
-	
-/*
-void	philo(t_thread *thread,t_args *args)
-{
-	int	i;
-
-	i = 0;
-	while (i < args->philosophers)
-	{
-		if (i < args->philosophers)
-		{
-			thread[i].fork1 = &args->forks[i];
-			thread[i].exit = FALSE;
-			if (!i)
-				thread[i].fork2 = &args->forks[i-1];
-			else
-				thread[i].fork2 = &args->forks[args->philosophers];
-		}
-		thread[i].args = args;
-		thread[i].philo_eat_counter = args->full_belly;
-		thread[i].id = ++i;
-	}
-}*/
