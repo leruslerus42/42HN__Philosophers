@@ -6,7 +6,7 @@
 #    By: rrajaobe <rrajaobe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 05:39:02 by rrajaobe          #+#    #+#              #
-#    Updated: 2022/04/23 06:58:10 by rrajaobe         ###   ########.fr        #
+#    Updated: 2022/04/25 08:14:51 by rrajaobe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,7 @@ OBJ = $(SRC: .c=.o)
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-		$(CC) $(FLAGS) $(OBJ) -lpthread -o $(NAME)
-#$(CFLAGS)
-#$(NAME): *.c
-#		$(CC) $(FLAGS) -c $(SRC)
-#		ar rc $(NAME) *.o
-#		$(CC) $(FLAGS) -L. -lft_philosophers -lpthread -o philo
+		$(CC) $(CFLAGS) $(OBJ) -lpthread -o $(NAME)
 
 clean:
 		rm -f *.o
