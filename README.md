@@ -15,27 +15,29 @@ The philosophers are alternatively eating, sleeping or thinking. When a philosop
 
 ## RULES
 - Global variables are forbidden.
-- Each philosopher has a number ranging from 1 to "number_of_philosophers".
-- Philosopher number 1 sits next to philosopher number number_of_philosophers. Any other philosopher number N sits between philosopher number N - 1 and philosopher number N + 1.
-- Any state change of a philosopher must be formatted as follows (with "X" as the number of the philosopher and "timestamp_in_ms" as current timestamp in milliseconds):
-timestamp_in_ms X has taken a fork
-imestamp_in_ms X is eating
-timestamp_in_ms X is sleeping
-timestamp_in_ms X is thinking
-timestamp_in_ms X died
-- A displayed state message should not be mixed up with another message.
+- Each philosopher has a number ranging from 1 to n, where n is the toatal number of the philosophers.
+- Philosopher number 1 sits next to philosopher number n. Any other philosopher sits between philosopher number 1 and philosopher n.
 - A message announcing a philosopher died should be displayed no more than 10 ms after the actual death of the philosopher.
 - Each philosopher should be a thread.
+
+## OUTPUT
+Any state change of a philosopher must be formatted as follows (with "X" as the number of the philosopher and "timestamp_in_ms" as current timestamp in milliseconds):
+- "timestamp_in_ms" "X" has taken a fork
+- "timestamp_in_ms" "X" is eating
+- "timestamp_in_ms" "X" is sleeping
+- "timestamp_in_ms" "X" is thinking
+- "timestamp_in_ms" "X" died
+
+![68747470733a2f2f692e696d6775722e636f6d2f4f4668716e71772e706e67](https://user-images.githubusercontent.com/85942176/198947571-f09a347f-3ced-4d5b-880f-42781724a9bf.png)
 
 # ARGUMENTS
 Arguments
 The program should take the following arguments:
-number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
-number_of_philosophers: The number of philosophers and also the number of forks.
-time_to_die: The time (in milliseconds) since the beginning of the last meal or the beginning of the simulation, after which a philosopher will die of starvation.
-time_to_eat: The time (in milliseconds) it takes for a philosopher to eat. During that time, they will need to hold two forks.
-time_to_sleep: The time a philosopher will spend sleeping.
-number_of_times_each_philosopher_must_eat: This argument is optional. If all philosophers have eaten at least "number_of_times_each_philosopher_must_eat" times, the simulation stops. If not specified, the simulation stops when a philosopher dies.
+- number_of_philosophers: The number of philosophers and also the number of forks.
+- time_to_die: The time (in milliseconds) since the beginning of the last meal or the beginning of the simulation, after which a philosopher will die of starvation.
+- time_to_eat: The time (in milliseconds) it takes for a philosopher to eat. During that time, they will need to hold two forks.
+- time_to_sleep: The time a philosopher will spend sleeping.
+- number_of_times_each_philosopher_must_eat(optional): If all philosophers have eaten at least "x" times, the simulation stops, otherwise when a philosopher dies.
 
 ## APPROACH
 Basically every philosopher (thread) is going to executing an infinite while loop with the philosopher's routine (eat-sleep-think-repeat, as described above), until one of them dies of starvation or all of them have eaten the number of required meals.
