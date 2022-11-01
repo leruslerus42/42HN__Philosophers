@@ -51,6 +51,6 @@ As all other C projects at the 42 school, the code has to written in accordance 
 - the only predefined functions allowed for this project are: memset, printf, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock.
 
 ## RESULT 
-<img width="1170" alt="Screenshot 2022-10-31 at 06 09 59" src="https://user-images.githubusercontent.com/85942176/198935728-0360c4d0-2b1e-478a-8a84-edb0788021c9.png">
 
+<img width="846" alt="Screenshot 2022-11-01 at 07 15 40" src="https://user-images.githubusercontent.com/85942176/199170889-bdf34cca-c572-418c-83f3-70b55a45b89e.png">
 
